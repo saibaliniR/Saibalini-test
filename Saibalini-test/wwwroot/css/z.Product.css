@@ -1,0 +1,70 @@
+﻿.tblProducts {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f1f1f1;
+    font-size: 1em;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    /* Table header */
+    .tblProducts th {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    /* Table body */
+    .tblProducts td {
+        padding: 10px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Alternate row color */
+    .tblProducts tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Hover effect */
+    .tblProducts tbody tr:hover {
+        background-color: #ddd;
+    }
+
+/* Add Product Styling */
+.add-product, #submit-product, #productList {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    border: 1px solid black;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+    /* Hover effect */
+    .add-product:hover, #submit-product:hover, #productList:hover {
+        background-color: lightgreen;
+        border-color: black;
+        color: white;
+    }
+#productNameLabel, #productPriceLabel, #productDescriptionLabel {
+    color: #4CAF50;
+    font:3em;
+    font-weight:bold
+}
+#productName, #productPrice, #productDescription {
+    color: white;
+    background-color:lightgreen
+}
+/* Edit/Delete Styling */
+.editIcon:hover, .deleteIcon:hover {
+    color: #4CAF50;
+    cursor: pointer;
+}
