@@ -6,6 +6,9 @@
         <h2>Add a New Product</h2>
 
         <form id="add-product-form" enctype="multipart/form-data">
+
+            <input type ="hidden" id="productId"/>
+
             <label for="productName" id="productNameLabel">Product Name:</label><br>
             <input type="text" id="productName" name="name" required><br><br>
 
@@ -15,8 +18,9 @@
             <label for="productDescription" id="productDescriptionLabel">Description:</label><br>
             <textarea id="productDescription" name="description" rows="4" required></textarea><br><br>
 
-            <button type="submit" id="submit-product">Add Product</button> <button id="productList">Go to Product Listing</button>
-            <button id="edit-product" style="display:none">Edit Product</button> <button id="productList">Go to Product Listing</button>
+            <button id="submit-product">Add Product</button> 
+            <button id="edit-product" style="display:none">Edit Product</button>
+            <button id="productList">Go to Product Listing</button>
         </form>
     </div>
     <div class="productDetail">

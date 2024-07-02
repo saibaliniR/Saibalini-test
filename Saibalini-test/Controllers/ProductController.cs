@@ -42,6 +42,7 @@ namespace Saibalini_test.Controllers
                 };
             }
         }
+
         [HttpPost]
         public async Task<IActionResult> Product([FromBody] Product formProduct)
         {
@@ -52,6 +53,51 @@ namespace Saibalini_test.Controllers
                 ProductService ps = new ProductService(_database);
                 await ps.AddProduct(formProduct.Name, formProduct.Price, formProduct.Description);
                 return new JsonResult(new { Message = "Product Added Successfully"}, options)
+                {
+                    StatusCode = StatusCodes.Status200OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { Message = ex.Message, StackTrace = ex.StackTrace, ExceptionType = "Internal Server Error" }, options)
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+        }
+        [HttpPut]
+        public async Task<IActionResult> SaveProduct([FromBody] Product formProduct)
+        {
+            var options = new JsonSerializerOptions();
+            options.PropertyNamingPolicy = null;
+            try
+            {
+                ProductService ps = new ProductService(_database);
+                await ps.EditProduct(formProduct.Id, formProduct.Name, formProduct.Price, formProduct.Description);
+                return new JsonResult(new { Message = "Product Saved Successfully" }, options)
+                {
+                    StatusCode = StatusCodes.Status200OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new { Message = ex.Message, StackTrace = ex.StackTrace, ExceptionType = "Internal Server Error" }, options)
+                {
+                    StatusCode = StatusCodes.Status500InternalServerError
+                };
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct([FromBody] Product formProduct)
+        {
+            var options = new JsonSerializerOptions();
+            options.PropertyNamingPolicy = null;
+            try
+            {
+                ProductService ps = new ProductService(_database);
+                await ps.DeleteProduct(Convert.ToInt32(formProduct.Id));
+                return new JsonResult(new { Message = "Product deleted Successfully" }, options)
                 {
                     StatusCode = StatusCodes.Status200OK
                 };

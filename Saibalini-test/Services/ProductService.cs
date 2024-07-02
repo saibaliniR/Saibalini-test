@@ -26,5 +26,27 @@ namespace Saibalini_test.Services
             _database.Products.Add(product);
             await _database.SaveChangesAsync();
         }
+        public async Task EditProduct(int id, string name, decimal price, string description)
+        { 
+            Product product = GetProductList().Result.FirstOrDefault(i => i.Id == id);
+            if(product is not null)
+            {
+                product.Name = name;
+                product.Price = price;
+                product.Description = description;
+                await _database.SaveChangesAsync();
+            }
+            
+        }
+
+        public async Task DeleteProduct(int id)
+        {
+            Product product = GetProductList().Result.FirstOrDefault(i => i.Id == id);
+            if (product is not null)
+            {
+                _database.Products.Remove(product);
+            }
+            await _database.SaveChangesAsync();
+        }
     }
 }
