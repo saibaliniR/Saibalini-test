@@ -126,7 +126,7 @@ $(document).ready(function () {
             dataType: 'json',
             async: true,
             success: function (response) {
-                alert("Product Saved Successfully!")
+                alert("Product Saved Successfully!");
                 window.location.reload();
             }
         });

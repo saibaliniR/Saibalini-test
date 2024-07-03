@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
+using Saibalini_test.Services;
+using Saibalini_test.Services.Abstractions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,7 @@ builder.Services.AddDbContext<Saibalini_test.Models.Database>(options => {
 builder.Services.AddControllersWithViews();
 //builder.Services.AddRazorPages()
 //    .AddMicrosoftIdentityUI();
+builder.Services.AddScoped<IProductService,ProductService>();
 
 var app = builder.Build();
 

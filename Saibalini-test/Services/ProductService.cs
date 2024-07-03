@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Saibalini_test.Models;
+using Saibalini_test.Services.Abstractions;
 using System;
 
 namespace Saibalini_test.Services
 {
-    public class ProductService
+    public class ProductService:IProductService
     {
         //private readonly ILogger<IndexModel> _logger;
         private readonly Database _database;

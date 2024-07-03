@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Saibalini_test.Models;
 using Saibalini_test.Services;
+using Saibalini_test.Services.Abstractions;
 using System.Diagnostics;
 using System.Text.Json;
 
@@ -12,11 +13,13 @@ namespace Saibalini_test.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private readonly Database _database;
+        private readonly IProductService _productService;
 
-        public ProductController(ILogger<ProductController> logger, Database database)
+        public ProductController(ILogger<ProductController> logger, Database database, IProductService productService)
         {
             _logger = logger;
             _database = database;
+            _productService = productService;
         }
         public IActionResult Index()
         {
@@ -26,12 +29,11 @@ namespace Saibalini_test.Controllers
         [HttpGet]
         public async Task<IActionResult> Product()
         {
-            var options = new JsonSerializerOptions();
+            JsonSerializerOptions options = new JsonSerializerOptions();
             options.PropertyNamingPolicy = null;
             try
             {
-                ProductService ps = new ProductService(_database);
-                var productList = await ps.GetProductList();
+                List<Product> productList = await _productService.GetProductList();
                 return Json(productList, options);
             }
             catch (Exception ex)
@@ -50,8 +52,7 @@ namespace Saibalini_test.Controllers
             options.PropertyNamingPolicy = null;
             try
             {
-                ProductService ps = new ProductService(_database);
-                await ps.AddProduct(formProduct.Name, formProduct.Price, formProduct.Description);
+                await _productService.AddProduct(formProduct.Name, formProduct.Price, formProduct.Description);
                 return new JsonResult(new { Message = "Product Added Successfully"}, options)
                 {
                     StatusCode = StatusCodes.Status200OK
@@ -72,8 +73,7 @@ namespace Saibalini_test.Controllers
             options.PropertyNamingPolicy = null;
             try
             {
-                ProductService ps = new ProductService(_database);
-                await ps.EditProduct(formProduct.Id, formProduct.Name, formProduct.Price, formProduct.Description);
+                await _productService.EditProduct(formProduct.Id, formProduct.Name, formProduct.Price, formProduct.Description);
                 return new JsonResult(new { Message = "Product Saved Successfully" }, options)
                 {
                     StatusCode = StatusCodes.Status200OK
@@ -95,8 +95,7 @@ namespace Saibalini_test.Controllers
             options.PropertyNamingPolicy = null;
             try
             {
-                ProductService ps = new ProductService(_database);
-                await ps.DeleteProduct(Convert.ToInt32(formProduct.Id));
+                await _productService.DeleteProduct(Convert.ToInt32(formProduct.Id));
                 return new JsonResult(new { Message = "Product deleted Successfully" }, options)
                 {
                     StatusCode = StatusCodes.Status200OK
