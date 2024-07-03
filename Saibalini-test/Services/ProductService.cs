@@ -7,7 +7,7 @@ using System;
 
 namespace Saibalini_test.Services
 {
-    public class ProductService:IProductService
+    public class ProductService : IProductService
     {
         //private readonly ILogger<IndexModel> _logger;
         private readonly Database _database;
@@ -28,16 +28,16 @@ namespace Saibalini_test.Services
             await _database.SaveChangesAsync();
         }
         public async Task EditProduct(int id, string name, decimal price, string description)
-        { 
+        {
             Product product = GetProductList().Result.FirstOrDefault(i => i.Id == id);
-            if(product is not null)
+            if (product is not null)
             {
                 product.Name = name;
                 product.Price = price;
                 product.Description = description;
                 await _database.SaveChangesAsync();
             }
-            
+
         }
 
         public async Task DeleteProduct(int id)

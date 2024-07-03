@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saibalini-test", "Saibalini-test\Saibalini-test.csproj", "{D40EA47B-A3B3-4ABF-A34D-6B6F50956128}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProduct", "TestProduct\TestProduct.csproj", "{819D22C2-1D77-4878-A032-94755AE13EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D40EA47B-A3B3-4ABF-A34D-6B6F50956128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40EA47B-A3B3-4ABF-A34D-6B6F50956128}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40EA47B-A3B3-4ABF-A34D-6B6F50956128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{819D22C2-1D77-4878-A032-94755AE13EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819D22C2-1D77-4878-A032-94755AE13EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819D22C2-1D77-4878-A032-94755AE13EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819D22C2-1D77-4878-A032-94755AE13EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

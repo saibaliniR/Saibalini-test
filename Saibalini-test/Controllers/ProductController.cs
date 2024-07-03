@@ -11,13 +11,11 @@ namespace Saibalini_test.Controllers
     //[Authorize]
     public class ProductController : Controller
     {
-        private readonly ILogger<ProductController> _logger;
         private readonly Database _database;
         private readonly IProductService _productService;
 
-        public ProductController(ILogger<ProductController> logger, Database database, IProductService productService)
+        public ProductController(Database database, IProductService productService)
         {
-            _logger = logger;
             _database = database;
             _productService = productService;
         }
