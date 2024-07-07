@@ -5,4 +5,3 @@ Steps are below to make the project work
 •	Change the appsettings.development.json as required.
 •	Run the project locally by pressing f5.
 •	Screenshot of the site is added in the name as  “core-site.png”
-N.B- identity cannot be implemented as my azure credit limit is exhausted. 
